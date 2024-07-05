@@ -8,6 +8,7 @@ import imgg from "./logoict 2.png";
 import noti from "./notifications.png";
 import DropdownContainer from "./components/DropdownContainer";
 import filem from "./bookmark_manager.png";
+import ImportFilePopup from "./components/importfile";
 
 const App = () => {
   const [items, setItems] = useState([
@@ -17,6 +18,7 @@ const App = () => {
   ]);
   const [schedule, setSchedule] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
+  const [showImportPopup, setShowImportPopup] = useState(false);
   const [currentItem, setCurrentItem] = useState(null);
   const [selectedOptions, setSelectedOptions] = useState(["", "", "", ""]);
 
@@ -105,9 +107,9 @@ const App = () => {
       <div className="App">
         <header>
           <ul>
-            <li><img src={imgg} alt="Logo" className="Logo" /></li>
-            <li><img src={filem} alt="filem" className="filem" /></li>
-            <li><img src={noti} alt="Bell" className="Bell" /></li>
+            <li><img src={imgg} alt="Logo" className="Logo"  /></li>
+            <li><img src={filem} alt="filem" className="filem" onClick={() => setShowImportPopup(true)} /></li>
+            <li><img src={noti} alt="Bell" className="Bell"  /></li>
           </ul>
         </header>
         <DropdownContainer onChange={handleDropdownChange} />
@@ -177,6 +179,9 @@ const App = () => {
                 </label>
                 <button onClick={handleSaveEdit}>Save</button>
               </div>
+            )}
+            {showImportPopup && (
+              <ImportFilePopup onClose={() => setShowImportPopup(false)} />
             )}
           </>
         )}
