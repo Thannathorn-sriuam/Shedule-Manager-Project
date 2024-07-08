@@ -106,15 +106,18 @@ tr:last-child td {
 
 .popup-inner {
   background: #fff;
-  padding: 20px;
+  padding: 100px;
   border-radius: 10px;
   text-align: center;
 }
 
 .popup-buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 50px;
   margin-top: 20px;
+  width: 200px; 
+  margin: auto;
 }
 
 footer {
