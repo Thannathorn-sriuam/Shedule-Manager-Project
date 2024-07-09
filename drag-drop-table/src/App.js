@@ -9,6 +9,7 @@ import noti from "./notifications.png";
 import DropdownContainer from "./components/DropdownContainer";
 import filem from "./bookmark_manager.png";
 import ImportFilePopup from "./components/importfile";
+import EditSlot from "./components/EditSlot"; 
 
 const App = () => {
   const [items, setItems] = useState([
@@ -107,9 +108,9 @@ const App = () => {
       <div className="App">
         <header>
           <ul>
-            <li><img src={imgg} alt="Logo" className="Logo"  /></li>
+            <li><img src={imgg} alt="Logo" className="Logo" /></li>
             <li><img src={filem} alt="filem" className="filem" onClick={() => setShowImportPopup(true)} /></li>
-            <li><img src={noti} alt="Bell" className="Bell"  /></li>
+            <li><img src={noti} alt="Bell" className="Bell" /></li>
           </ul>
         </header>
         <DropdownContainer onChange={handleDropdownChange} />
@@ -140,9 +141,6 @@ const App = () => {
             <div className="selected-text">
               <p>{displayText2}</p>
             </div>
-            <div>
-              
-            </div>
             <ScheduleTable
               schedule={schedule}
               addToSchedule={handleItemDrop}
@@ -152,33 +150,11 @@ const App = () => {
               items={items}
             />
             {showPopup && (
-              <div className="popup">
-                <h2>Edit Scheduled Item</h2>
-                <input
-                  type="text"
-                  value={currentItem.name}
-                  onChange={(e) =>
-                    setCurrentItem({ ...currentItem, name: e.target.value })
-                  }
-                />
-                <label>
-                  Duration:
-                  <input
-                    type="number"
-                    value={currentItem.duration}
-                    onChange={(e) =>
-                      setCurrentItem({
-                        ...currentItem,
-                        duration: parseFloat(e.target.value),
-                      })
-                    }
-                    min="0.5"
-                    max="4"
-                    step="0.5"
-                  />
-                </label>
-                <button onClick={handleSaveEdit}>Save</button>
-              </div>
+              <EditSlot
+                currentItem={currentItem}
+                setCurrentItem={setCurrentItem}
+                handleSaveEdit={handleSaveEdit}
+              />
             )}
             {showImportPopup && (
               <ImportFilePopup onClose={() => setShowImportPopup(false)} />

@@ -38,7 +38,7 @@ const ScheduleTable = ({ schedule, addToSchedule, removeFromSchedule, onItemClic
                 <td className="slotname" key={`${start}-${colIndex}`} rowSpan={rowSpan}>
                   <div
                     className="scheduled-item"
-                    // onClick={() => onItemClick(scheduledItem)}
+                    onClick={() => onItemClick(scheduledItem)}
                   >
                     {scheduledItem.name}
                     <br />
