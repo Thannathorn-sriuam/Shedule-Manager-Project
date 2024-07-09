@@ -1,4 +1,3 @@
-// src/components/DropdownContainer.js
 import React, { useState } from "react";
 import "./DropdownContainer.css";
 
@@ -14,12 +13,12 @@ const DropdownContainer = ({ onChange }) => {
 
   return (
     <div className="dropdown-container">
-      <select value={selectedOptions[0]} onChange={(e) => handleDropdownChange(0, e)}>
-        <option value="">Select a term</option>
-        <option value="2023/1">2023/1</option>
-        <option value="2023/2">2023/2</option>
-        <option value="2023/3">2023/3</option>
-      </select>
+      <input
+        type="text"
+        value={selectedOptions[0]}
+        onChange={(e) => handleDropdownChange(0, e)}
+        placeholder="Enter a term"
+      />
       <select value={selectedOptions[1]} onChange={(e) => handleDropdownChange(1, e)}>
         <option value="">Select a program</option>
         <option value="ICT">ICT</option>
