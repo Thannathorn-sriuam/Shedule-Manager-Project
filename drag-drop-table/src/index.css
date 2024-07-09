@@ -172,12 +172,28 @@ footer {
   margin: 0;
   padding: 5px;
   font-size: 20px;
-  background-color: #F5E389;
   border-radius: 5px;
+  /* background-color: #F5E389; */
 }
 
 .items {
   background-color: #ABDEB3; 
   padding: 40px;
   border-radius: 5px; 
+}
+
+.yellow-background {
+  background-color: #F5E389; /* Yellow */
+}
+
+.pink-background {
+  background-color: #F3B3B2; /* Pink */
+}
+
+.green-background {
+  background-color: #ABDEB3; /* Green */
+}
+
+.blue-background {
+  background-color: #B3D8EA; /* Blue */
 }

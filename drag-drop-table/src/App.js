@@ -9,7 +9,7 @@ import noti from "./notifications.png";
 import DropdownContainer from "./components/DropdownContainer";
 import filem from "./bookmark_manager.png";
 import ImportFilePopup from "./components/importfile";
-import EditSlot from "./components/EditSlot"; 
+import EditSlot from "./components/EditSlot";
 
 const App = () => {
   const [items, setItems] = useState([
@@ -103,6 +103,11 @@ const App = () => {
     document.title = "my page";
   }, []);
 
+  const displayTextClass = selectedOptions[2] === "ปี1" ? "yellow-background" :
+    selectedOptions[2] === "ปี2" ? "pink-background" :
+      selectedOptions[2] === "ปี3" ? "green-background" :
+        selectedOptions[2] === "ปี4" ? "blue-background" : "";
+
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="App">
@@ -117,7 +122,7 @@ const App = () => {
         {selectedOptions[0] && selectedOptions[1] && (
           <>
             <div className="selected-text">
-              <p>{displayText}</p>
+              <p className={displayTextClass}>{displayText}</p>
             </div>
             <div className="items">
               {items.map((item) => (
@@ -139,8 +144,9 @@ const App = () => {
         {selectedOptions[1] && selectedOptions[2] && selectedOptions[3] && (
           <>
             <div className="selected-text">
-              <p>{displayText2}</p>
+              <p className={displayTextClass}>{displayText2}</p>
             </div>
+
             <ScheduleTable
               schedule={schedule}
               addToSchedule={handleItemDrop}
