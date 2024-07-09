@@ -121,23 +121,25 @@ const App = () => {
         <DropdownContainer onChange={handleDropdownChange} />
         {selectedOptions[0] && selectedOptions[1] && (
           <>
-            <div className="selected-text">
-              <p className={displayTextClass}>{displayText}</p>
-            </div>
-            <div className="items">
-              {items.map((item) => (
-                <DraggableItem key={item.id} item={item} />
-              ))}
-              <button
-                onClick={() =>
-                  setItems((prevItems) => [
-                    ...prevItems,
-                    { id: prevItems.length + 1, name: "New Item", duration: 1 },
-                  ])
-                }
-              >
-                + Add Item
-              </button>
+            <div className="floating">
+              <div className="selected-text">
+                <p className={displayTextClass}>{displayText}</p>
+              </div>
+              <div className="items">
+                {items.map((item) => (
+                  <DraggableItem key={item.id} item={item} />
+                ))}
+                <button
+                  onClick={() =>
+                    setItems((prevItems) => [
+                      ...prevItems,
+                      { id: prevItems.length + 1, name: "New Item", duration: 1 },
+                    ])
+                  }
+                >
+                  + Add Item
+                </button>
+              </div>
             </div>
           </>
         )}
