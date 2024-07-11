@@ -37,6 +37,7 @@ table {
   border: 1px solid black;
   table-layout: fixed;
   padding-bottom: 20px;
+  padding: auto;
 }
 
 th, td {
@@ -136,14 +137,14 @@ footer {
 
 .App header .filem {
   margin-left: 1150px; 
-  height: 40px;
-  width: 50px;
+  height: 30px;
+  width: 40px;
 }
 
 .App header .Bell {
   margin-left: 30px;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
 }
 
 .App header ul {
@@ -173,7 +174,6 @@ footer {
 }
 
 .items {
-  background-color: #ABDEB3; 
   padding: 40px;
   border-radius: 5px; 
 }

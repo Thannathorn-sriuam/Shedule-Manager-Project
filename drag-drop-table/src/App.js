@@ -125,20 +125,22 @@ const App = () => {
               <div className="selected-text">
                 <p className={displayTextClass}>{displayText}</p>
               </div>
-              <div className="items">
-                {items.map((item) => (
-                  <DraggableItem key={item.id} item={item} />
-                ))}
-                <button
-                  onClick={() =>
-                    setItems((prevItems) => [
-                      ...prevItems,
-                      { id: prevItems.length + 1, name: "New Item", duration: 1 },
-                    ])
-                  }
-                >
-                  + Add Item
-                </button>
+              <div className={displayTextClass}>
+                <div className="items">
+                  {items.map((item) => (
+                    <DraggableItem key={item.id} item={item} selectedYear={selectedOptions[2]} />
+                  ))}
+                  <button
+                    onClick={() =>
+                      setItems((prevItems) => [
+                        ...prevItems,
+                        { id: prevItems.length + 1, name: "New Item", duration: 1 },
+                      ])
+                    }
+                  >
+                    + Add Item
+                  </button>
+                </div>
               </div>
             </div>
           </>
@@ -156,6 +158,7 @@ const App = () => {
               onItemClick={handleItemClick}
               moveItem={moveItem}
               items={items}
+              selectedYear={selectedOptions[2]}
             />
             {showPopup && (
               <EditSlot

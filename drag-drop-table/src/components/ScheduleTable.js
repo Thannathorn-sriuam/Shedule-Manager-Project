@@ -1,7 +1,7 @@
 import React from "react";
 import DroppableCell from "./DroppableCell";
 
-const ScheduleTable = ({ schedule, addToSchedule, removeFromSchedule, onItemClick, items }) => {
+const ScheduleTable = ({ schedule, addToSchedule, removeFromSchedule, onItemClick, items, selectedYear }) => {
   const renderCells = () => {
     const cells = [];
     const timeSlots = Array.from({ length: 24 }, (_, i) => {
@@ -30,6 +30,24 @@ const ScheduleTable = ({ schedule, addToSchedule, removeFromSchedule, onItemClic
                 item.col === colIndex
             );
 
+            let backgroundColor;
+            switch (selectedYear) {
+              case "ปี1":
+                backgroundColor = '#FFFFCC'; // light yellow
+                break;
+              case "ปี2":
+                backgroundColor = '#FFD1DC'; // light pink
+                break;
+              case "ปี3":
+                backgroundColor = '#CCFFCC'; // light green
+                break;
+              case "ปี4":
+                backgroundColor = '#CCFFFF'; // light blue
+                break;
+              default:
+                backgroundColor = '#D8EADE'; // default color
+            }
+
             if (scheduledItem) {
               const rowSpan = scheduledItem.duration * 2; // since each slot is 30 mins
               const itemStartTime = timeSlots[scheduledItem.row].start;
@@ -39,6 +57,7 @@ const ScheduleTable = ({ schedule, addToSchedule, removeFromSchedule, onItemClic
                   <div
                     className="scheduled-item"
                     onClick={() => onItemClick(scheduledItem)}
+                    style={{ backgroundColor }}
                   >
                     {scheduledItem.name}
                     <br />
@@ -66,6 +85,7 @@ const ScheduleTable = ({ schedule, addToSchedule, removeFromSchedule, onItemClic
                     addToSchedule={addToSchedule}
                     items={items}
                     cellContent={null}
+                    backgroundColor={backgroundColor}
                   />
                 );
               } else {
