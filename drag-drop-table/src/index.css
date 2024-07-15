@@ -20,9 +20,11 @@ code {
 .items {
   justify-content: center;
   margin-bottom: 20px;
-  padding: auto;
-  overflow: auto;
-  white-space: nowrap;
+  padding: 40px; /* Combined padding here */
+  overflow-y: auto; /* Enable vertical scrolling */
+  /* white-space: nowrap; */
+  height: calc(100vh - 150px); /* Adjust the height as needed */
+  border-radius: 5px; /* Combined border-radius here */
 }
 
 button {
@@ -75,7 +77,7 @@ tr:last-child td {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   box-sizing: border-box;
   border-radius: 5px;
@@ -131,20 +133,20 @@ footer {
 }
 
 .App header .Logo {
-  height: 94px;
-  width: 168px;
+  height: 60px;
+  width: 100px;
 }
 
 .App header .filem {
-  margin-left: 1150px; 
-  height: 30px;
-  width: 40px;
+  margin-left: 1250px; 
+  height: 25px;
+  width: 30px;
 }
 
 .App header .Bell {
   margin-left: 30px;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
 }
 
 .App header ul {
@@ -159,7 +161,6 @@ footer {
   display: inline;
 }
 
-
 .selected-text {
   display: flex;
   justify-content: flex-end;
@@ -171,11 +172,6 @@ footer {
   padding: 5px;
   font-size: 20px;
   border-radius: 5px;
-}
-
-.items {
-  padding: 40px;
-  border-radius: 5px; 
 }
 
 .yellow-background {

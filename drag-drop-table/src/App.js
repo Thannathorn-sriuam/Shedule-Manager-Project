@@ -119,7 +119,7 @@ const App = () => {
           </ul>
         </header>
         <DropdownContainer onChange={handleDropdownChange} />
-        {selectedOptions[0] && selectedOptions[1] && (
+        {selectedOptions.every(option => option) && (
           <>
             <div className="floating">
               <div className="selected-text">
@@ -143,10 +143,7 @@ const App = () => {
                 </div>
               </div>
             </div>
-          </>
-        )}
-        {selectedOptions[1] && selectedOptions[2] && selectedOptions[3] && (
-          <>
+
             <div className="selected-text">
               <p className={displayTextClass}>{displayText2}</p>
             </div>
