@@ -127,10 +127,7 @@ const App = () => {
               </div>
               <div className={displayTextClass}>
                 <div className="items">
-                  {items.map((item) => (
-                    <DraggableItem key={item.id} item={item} selectedYear={selectedOptions[2]} />
-                  ))}
-                  <button
+                  <button className="add-item"
                     onClick={() =>
                       setItems((prevItems) => [
                         ...prevItems,
@@ -140,6 +137,10 @@ const App = () => {
                   >
                     + Add Item
                   </button>
+                  {items.map((item) => (
+                    <DraggableItem key={item.id} item={item} selectedYear={selectedOptions[2]} />
+                  ))}
+                  
                 </div>
               </div>
             </div>
