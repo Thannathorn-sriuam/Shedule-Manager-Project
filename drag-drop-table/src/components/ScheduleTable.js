@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import DroppableCell from "./DroppableCell";
+import { useDragLayer } from "react-dnd";
 
 const ScheduleTable = ({ schedule, addToSchedule, moveItem, removeFromSchedule, onItemClick, items, selectedYear }) => {
+  const [currentDragItem, setCurrentDragItem] = useState(null);
+
+  const { item: dragItem } = useDragLayer((monitor) => ({
+    item: monitor.getItem(),
+  }));
+
+  React.useEffect(() => {
+    setCurrentDragItem(dragItem);
+  }, [dragItem]);
+
   const renderCells = () => {
     const cells = [];
     const timeSlots = Array.from({ length: 24 }, (_, i) => {
@@ -85,6 +96,8 @@ const ScheduleTable = ({ schedule, addToSchedule, moveItem, removeFromSchedule, 
                     addToSchedule={addToSchedule}
                     moveItem={moveItem}
                     cellContent={null}
+                    schedule={schedule}
+                    currentDragItem={currentDragItem}
                     backgroundColor={backgroundColor}
                   />
                 );
