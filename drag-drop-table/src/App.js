@@ -140,7 +140,6 @@ const App = () => {
                   {items.map((item) => (
                     <DraggableItem key={item.id} item={item} selectedYear={selectedOptions[2]} />
                   ))}
-                  
                 </div>
               </div>
             </div>
@@ -165,10 +164,10 @@ const App = () => {
                 handleSaveEdit={handleSaveEdit}
               />
             )}
-            {showImportPopup && (
-              <ImportFilePopup onClose={() => setShowImportPopup(false)} />
-            )}
           </>
+        )}
+        {showImportPopup && (
+          <ImportFilePopup onClose={() => setShowImportPopup(false)} />
         )}
       </div>
       <footer></footer>
