@@ -1,7 +1,7 @@
 import React from "react";
 import DroppableCell from "./DroppableCell";
 
-const ScheduleTable = ({ schedule, addToSchedule, removeFromSchedule, onItemClick, items, selectedYear }) => {
+const ScheduleTable = ({ schedule, addToSchedule, moveItem, removeFromSchedule, onItemClick, items, selectedYear }) => {
   const renderCells = () => {
     const cells = [];
     const timeSlots = Array.from({ length: 24 }, (_, i) => {
@@ -83,7 +83,7 @@ const ScheduleTable = ({ schedule, addToSchedule, removeFromSchedule, onItemClic
                     row={rowIndex}
                     col={colIndex}
                     addToSchedule={addToSchedule}
-                    items={items}
+                    moveItem={moveItem}
                     cellContent={null}
                     backgroundColor={backgroundColor}
                   />
@@ -119,3 +119,4 @@ const ScheduleTable = ({ schedule, addToSchedule, removeFromSchedule, onItemClic
 };
 
 export default ScheduleTable;
+

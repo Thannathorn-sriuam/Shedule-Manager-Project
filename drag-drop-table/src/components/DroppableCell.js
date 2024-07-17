@@ -2,11 +2,17 @@ import React from "react";
 import { useDrop } from "react-dnd";
 import ItemTypes from "./ItemTypes";
 
-const DroppableCell = ({ row, col, addToSchedule, items, cellContent }) => {
+const DroppableCell = ({ row, col, addToSchedule, moveItem, cellContent }) => {
   const [{ isOver, canDrop }, drop] = useDrop({
     accept: ItemTypes.ITEM,
-    drop: (item) => addToSchedule(item, row, col),
-    canDrop: () => !cellContent,
+    drop: (item) => {
+      if (cellContent) {
+        moveItem(item, row, col);
+      } else {
+        addToSchedule(item, row, col);
+      }
+    },
+    canDrop: () => !cellContent || cellContent.scheduleId !== undefined,
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
       canDrop: !!monitor.canDrop(),
