@@ -1,0 +1,44 @@
+/* /components/Noti.css */
+.noti-popup {
+    position: fixed;
+    top: 10%;
+    right: 5%;
+    width: 300px;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .noti-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .noti-header h3 {
+    margin: 0;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .noti-body {
+    padding: 10px;
+  }
+  
+  .noti-item {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .noti-item:last-child {
+    border-bottom: none;
+  }
+  
