@@ -2,11 +2,25 @@
 import React from "react";
 import "./Noti.css"; // Make sure to style your notification popup
 
+const Rname = 1;
+
+const Tname = 2;
+
+const notiR = `ห้องซํ้า (${Rname})`;
+const notiT = `อาจารย์ซํ้า (${Tname})`;
+
 const Noti = ({ notifications, onClose }) => {
   return (
     <div className="noti-popup">
       <div className="noti-header">
-        <h3>Notifications</h3>
+        <div className="noti-item">
+          <p className="noti-R">{notiR}</p>
+          <input type="checkbox" className="noti-checkbox" />
+        </div>
+        <div className="noti-item">
+          <p className="noti-T">{notiT}</p>
+          <input type="checkbox" className="noti-checkbox" />
+        </div>
         <button className="close-button" onClick={onClose}>X</button>
       </div>
       <div className="noti-body">

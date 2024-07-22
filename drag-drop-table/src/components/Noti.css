@@ -1,44 +1,91 @@
 /* /components/Noti.css */
 .noti-popup {
-    position: fixed;
-    top: 10%;
-    right: 5%;
-    width: 300px;
-    background: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-  
-  .noti-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .noti-header h3 {
-    margin: 0;
-  }
-  
-  .close-button {
-    background: none;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .noti-body {
-    padding: 10px;
-  }
-  
-  .noti-item {
-    padding: 5px 0;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .noti-item:last-child {
-    border-bottom: none;
-  }
-  
+  position: fixed;
+  top: 10%;
+  right: 5%;
+  width: 300px;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.noti-header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.noti-header .noti-item {
+  display: flex;
+  align-items: center;
+}
+
+.noti-header p {
+  margin: 0;
+  font-size: medium;
+  margin-right: 5px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.noti-body {
+  padding: 10px;
+}
+
+.noti-item {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.noti-item:last-child {
+  border-bottom: none;
+}
+
+.noti-R {
+  border: 1px solid #F83232;
+  border-radius: 6px;
+  background-color: #F83232;
+  padding: 3px;
+}
+
+.noti-T {
+  border: 1px solid #F5B944;
+  border-radius: 6px;
+  background-color: #F5B944;
+  padding: 3px;
+}
+
+.noti-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+}
+
+.noti-checkbox:checked {
+  background-color: green;
+}
+
+.noti-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 2px;
+}
