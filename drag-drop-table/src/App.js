@@ -9,7 +9,8 @@ import noti from "./notifications.png";
 import DropdownContainer from "./components/DropdownContainer";
 import filem from "./bookmark_manager.png";
 import CSVImportPopup from "./components/CSVImportPopup"; // เพิ่มการ import CSVImportPopup
-import Noti from "./components/Noti"; // add Noti
+import Noti from "./components/Noti"; // add 
+import EditSlot from "./components/EditSlot";//add
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -27,7 +28,7 @@ const App = () => {
   };
 
   const displayText = `รายชื่อวิชาของ ${selectedOptions[1]} ${selectedOptions[2]}`;
-  const displayText2 = `ตารางเรียน ${selectedOptions[1]} ${selectedOptions[2]} ${selectedOptions[3]}`;
+  const displayText2 = `ตารางเรียน ${selectedOptions[1]} ปี${selectedOptions[2]} Sec${selectedOptions[3]}`;
 
   const handleItemDrop = (item, row, col) => {
     const newItem = {
@@ -158,6 +159,11 @@ const App = () => {
     document.title = "my page";
   }, []);
 
+  const displayTextClass = selectedOptions[2] === "1" ? "yellow-background" :
+    selectedOptions[2] === "2" ? "pink-background" :
+      selectedOptions[2] === "3" ? "green-background" :
+        selectedOptions[2] === "4" ? "blue-background" : "";
+
   useEffect(() => {
     if (selectedOptions[1] && selectedOptions[2] && selectedOptions[3]) {
       fetch(`/api/slots/${selectedOptions[1]}/${selectedOptions[2]}/${selectedOptions[3]}`)
@@ -188,30 +194,32 @@ const App = () => {
         <DropdownContainer onChange={handleDropdownChange} />
         {selectedOptions.every(option => option) && (
           <>
-          {/* add flaoting */}
+            {/* add flaoting */}
             <div className="floating">
               <div className="selected-text">
-                <p>{displayText}</p>
+                <p className={displayTextClass}>{displayText}</p>
               </div>
-              <div className="items">
-                {items.map((item) => (
-                  <DraggableItem key={item.id} item={item} />
-                ))}
-                <button
-                  onClick={() =>
-                    setItems((prevItems) => [
-                      ...prevItems,
-                      { id: prevItems.length + 1, name: "New Item", duration: 1 },
-                    ])
-                  }
-                >
-                  + Add Item
-                </button>
+              <div className={displayTextClass}>
+                <div className="items">
+                  {items.map((item) => (
+                    <DraggableItem key={item.id} item={item} />
+                  ))}
+                  <button
+                    onClick={() =>
+                      setItems((prevItems) => [
+                        ...prevItems,
+                        { id: prevItems.length + 1, name: "New Item", duration: 1 },
+                      ])
+                    }
+                  >
+                    + Add Item
+                  </button>
+                </div>
               </div>
             </div>
             {/* edit */}
             <div className="selected-text">
-              <p>{displayText2}</p>
+              <p className={displayTextClass}>{displayText2}</p>
             </div>
             <ScheduleTable
               schedule={schedule}
@@ -219,35 +227,14 @@ const App = () => {
               removeFromSchedule={handleRemoveItem}
               onItemClick={handleItemClick}
               moveItem={moveItem}
+              selectedYear={selectedOptions[2]}
             />
-            {showPopup && (
-              <div className="popup">
-                <h2>Edit Scheduled Item</h2>
-                <input
-                  type="text"
-                  value={currentItem.name}
-                  onChange={(e) =>
-                    setCurrentItem({ ...currentItem, name: e.target.value })
-                  }
-                />
-                <label>
-                  Duration:
-                  <input
-                    type="number"
-                    value={currentItem.duration}
-                    onChange={(e) =>
-                      setCurrentItem({
-                        ...currentItem,
-                        duration: parseFloat(e.target.value),
-                      })
-                    }
-                    min="0.5"
-                    max="4"
-                    step="0.5"
-                  />
-                </label>
-                <button onClick={handleSaveEdit}>Save</button>
-              </div>
+             {showPopup && (
+              <EditSlot //new
+                currentItem={currentItem}
+                setCurrentItem={setCurrentItem}
+                handleSaveEdit={handleSaveEdit}
+              />
             )}
           </>
         )}

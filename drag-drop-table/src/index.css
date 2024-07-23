@@ -19,10 +19,15 @@ code {
 }
 
 .items {
-  display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-bottom: 20px;
-  padding: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px;
+  height: calc(100vh - 150px);
+  max-height: 500px;
+  border-radius: 5px;
+  overflow-y: scroll;
 }
 
 button {
@@ -30,7 +35,8 @@ button {
 }
 
 table {
-  width: 80%;
+  float: right;
+  width: 75%;
   border-collapse: collapse;
   margin: 0 auto;
   border: 1px solid black;
@@ -55,14 +61,8 @@ th.time-column, td.time-column {
 td {
   border-left: 1px solid black;
   border-right: 1px solid black;
-}
-
-td.slotname {
-  border-bottom: hidden;
-}
-
-td:not(.time-column):not(.slotname) {
-  border-top: none;
+  border-top: 0.5px solid silver;
+  border-bottom: 0.5px solid silver;
 }
 
 td:first-child {
@@ -78,11 +78,11 @@ tr:last-child td {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   box-sizing: border-box;
   border-radius: 5px;
-  height: 100%; 
+  height: 100%;
 }
 
 .scheduled-item button {
@@ -94,13 +94,31 @@ tr:last-child td {
 
 .popup {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  border: 1px solid black;
-  padding: 20px;
-  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-inner {
+  background: #fff;
+  padding: 50px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  margin-top: 20px;
+  width: 200px;
+  margin: auto;
 }
 
 footer {
@@ -116,20 +134,20 @@ footer {
 }
 
 .App header .Logo {
-  height: 94px;
-  width: 168px;
+  height: 55px;
+  width: 80px;
 }
 
 .App header .filem {
-  margin-left: 1150px; 
-  height: 40px;
-  width: 50px;
+  margin-left: 1300px; 
+  height: 30px;
+  width: 40px;
 }
 
 .App header .Bell {
   margin-left: 30px;
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 30px;
 }
 
 .App header ul {
@@ -147,7 +165,7 @@ footer {
 
 .selected-text {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   margin: 20px 0;
 }
 
@@ -155,16 +173,26 @@ footer {
   margin: 0;
   padding: 5px;
   font-size: 20px;
-  background-color: #F5E389;
   border-radius: 5px;
 }
 
-.items {
-  background-color: #ABDEB3; 
-  padding: 40px;
-  border-radius: 5px; 
+.yellow-background {
+  background-color: #F5E389; /* Yellow */
+}
+
+.pink-background {
+  background-color: #F3B3B2; /* Pink */
+}
+
+.green-background {
+  background-color: #ABDEB3; /* Green */
+}
+
+.blue-background {
+  background-color: #B3D8EA; /* Blue */
 }
 
 .floating {
   position: fixed;
+  width: 20%;
 }
