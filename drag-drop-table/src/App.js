@@ -64,9 +64,9 @@ const App = () => {
           date: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][col - 1],
         }),
       })
-      .then(response => response.json())
-      .then(data => console.log('Slot date updated successfully:', data))
-      .catch((error) => console.error('Error updating slot date:', error));
+        .then(response => response.json())
+        .then(data => console.log('Slot date updated successfully:', data))
+        .catch((error) => console.error('Error updating slot date:', error));
     }
   };
 
@@ -103,9 +103,9 @@ const App = () => {
           date: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][newCol - 1],
         }),
       })
-      .then(response => response.json())
-      .then(data => console.log('Slot date updated successfully:', data))
-      .catch((error) => console.error('Error updating slot date:', error));
+        .then(response => response.json())
+        .then(data => console.log('Slot date updated successfully:', data))
+        .catch((error) => console.error('Error updating slot date:', error));
     }
   };
 
@@ -182,29 +182,32 @@ const App = () => {
           <ul>
             <li><img src={imgg} alt="Logo" className="Logo" /></li>
             <li><img src={filem} alt="filem" className="filem" onClick={handleCSVImportClick} /></li>
-            <li><img src={noti} alt="Bell" className="Bell" onClick={() => setShowNotiPopup(true)}/></li>
+            <li><img src={noti} alt="Bell" className="Bell" onClick={() => setShowNotiPopup(true)} /></li>
           </ul>
         </header>
         <DropdownContainer onChange={handleDropdownChange} />
         {selectedOptions.every(option => option) && (
           <>
-            <div className="selected-text">
-              <p>{displayText}</p>
-            </div>
-            <div className="items">
-              {items.map((item) => (
-                <DraggableItem key={item.id} item={item} />
-              ))}
-              <button
-                onClick={() =>
-                  setItems((prevItems) => [
-                    ...prevItems,
-                    { id: prevItems.length + 1, name: "New Item", duration: 1 },
-                  ])
-                }
-              >
-                + Add Item
-              </button>
+          {/* add flaoting */}
+            <div className="floating">
+              <div className="selected-text">
+                <p>{displayText}</p>
+              </div>
+              <div className="items">
+                {items.map((item) => (
+                  <DraggableItem key={item.id} item={item} />
+                ))}
+                <button
+                  onClick={() =>
+                    setItems((prevItems) => [
+                      ...prevItems,
+                      { id: prevItems.length + 1, name: "New Item", duration: 1 },
+                    ])
+                  }
+                >
+                  + Add Item
+                </button>
+              </div>
             </div>
             {/* edit */}
             <div className="selected-text">

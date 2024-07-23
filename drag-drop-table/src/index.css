@@ -165,4 +165,6 @@ footer {
   border-radius: 5px; 
 }
 
-
+.floating {
+  position: fixed;
+}
