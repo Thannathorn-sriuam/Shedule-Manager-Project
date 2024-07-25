@@ -74,13 +74,14 @@ const App = () => {
   const moveItem = (item, newRow, newCol) => {
     const conflict = schedule.some(
       (scheduledItem) =>
+        scheduledItem.scheduleId !== item.scheduleId &&
         scheduledItem.col === newCol &&
         (
           (scheduledItem.row <= newRow && scheduledItem.row + scheduledItem.duration > newRow) ||
           (newRow <= scheduledItem.row && newRow + item.duration > scheduledItem.row)
         )
     );
-
+  
     if (!conflict) {
       setSchedule((prevSchedule) =>
         prevSchedule.map((scheduledItem) =>
@@ -89,10 +90,10 @@ const App = () => {
             : scheduledItem
         )
       );
-
+  
       // Debugging output
       console.log(`Updating slot date: slotId=${item.slot_id}, date=${['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][newCol - 1]}`);
-
+  
       // Update the date column in the database
       fetch(`/api/update-slot-date`, {
         method: 'POST',
@@ -109,6 +110,7 @@ const App = () => {
         .catch((error) => console.error('Error updating slot date:', error));
     }
   };
+  
 
   const handleItemClick = (item) => {
     setCurrentItem(item);

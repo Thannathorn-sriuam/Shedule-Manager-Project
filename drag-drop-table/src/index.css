@@ -37,6 +37,7 @@ button {
 table {
   float: right;
   width: 75%;
+  height: 40px;
   border-collapse: collapse;
   margin: 0 auto;
   border: 1px solid black;

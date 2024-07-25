@@ -4,7 +4,7 @@ const EditSlot = ({ currentItem, setCurrentItem, handleSaveEdit }) => {
   return (
     <div className="edit-slot-popup">
       <div className="edit-slot-popup-inner">
-        <h2>Edit Scheduled Item</h2>
+        {/* <h2>Edit Scheduled Item</h2> */}
         <div className="edit-slot-input-group">
           <label htmlFor="itemName">Subject Name:</label>
           <input
