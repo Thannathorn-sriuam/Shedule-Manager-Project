@@ -4,7 +4,7 @@ const EditSlot = ({ currentItem, setCurrentItem, handleSaveEdit }) => {
   return (
     <div className="edit-slot-popup">
       <div className="edit-slot-popup-inner">
-        {/* <h2>Edit Scheduled Item</h2> */}
+        <h2>{currentItem.name}</h2>
         <div className="edit-slot-input-group">
           <label htmlFor="itemName">Subject Name:</label>
           <input
@@ -15,7 +15,7 @@ const EditSlot = ({ currentItem, setCurrentItem, handleSaveEdit }) => {
           />
         </div>
         <div className="edit-slot-input-group">
-          <p>Aj.</p>
+          {currentItem.id}
         </div>
         <div className="edit-slot-input-group">
           <label htmlFor="itemAjName">Aj. Name:</label>
@@ -126,6 +126,9 @@ const EditSlot = ({ currentItem, setCurrentItem, handleSaveEdit }) => {
 
         .edit-slot-save-button:hover {
           background-color: #45a049;
+        }
+        .edit-slot-cancel:hover {
+          background-color: #F34E4D;
         }
       `}</style>
     </div>
