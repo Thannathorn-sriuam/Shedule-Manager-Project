@@ -37,7 +37,6 @@ button {
 table {
   float: right;
   width: 75%;
-  height: 40px;
   border-collapse: collapse;
   margin: 0 auto;
   border: 1px solid black;
@@ -140,7 +139,7 @@ footer {
 }
 
 .App header .filem {
-  margin-left: 1300px; 
+  margin-left: 1300px;
   height: 30px;
   width: 40px;
 }

@@ -49,9 +49,13 @@ const EditSlot = ({ currentItem, setCurrentItem, handleSaveEdit }) => {
             step="0.5"
           />
         </div>
-        <button className="edit-slot-save-button" onClick={handleSaveEdit}>
-          Save
-        </button>
+        <div className="edit-slot-button">
+          <button className="edit-slot-cancel" onClick={onclose}>Cancel</button>
+          <button className="edit-slot-save-button" onClick={handleSaveEdit}>
+            Save
+          </button>
+        </div>
+
       </div>
       <style jsx>{`
         .edit-slot-popup {
@@ -90,6 +94,21 @@ const EditSlot = ({ currentItem, setCurrentItem, handleSaveEdit }) => {
           padding: 10px;
           border: 1px solid #ccc;
           border-radius: 5px;
+        }
+        
+        .edit-slot-button {
+          float: right;
+          justify-content: space-evenly;
+        }
+
+        .edit-slot-cancel {
+          padding: 10px 20px;
+          font-size: 16px;
+          background-color: #F34E4E;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
         }
 
         .edit-slot-save-button {
