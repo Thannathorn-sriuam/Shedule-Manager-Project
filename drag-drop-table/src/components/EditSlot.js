@@ -15,13 +15,7 @@ const EditSlot = ({ currentItem, setCurrentItem, handleSaveEdit }) => {
           />
         </div>
         <div className="edit-slot-input-group">
-          <label htmlFor="itemRoom">Room:</label>
-          <input
-            type="text"
-            id="itemRoom"
-            value={currentItem.room || ""}
-            onChange={(e) => setCurrentItem({ ...currentItem, room: e.target.value })}
-          />
+          <p>Aj.</p>
         </div>
         <div className="edit-slot-input-group">
           <label htmlFor="itemAjName">Aj. Name:</label>
@@ -47,6 +41,15 @@ const EditSlot = ({ currentItem, setCurrentItem, handleSaveEdit }) => {
             min="0.5"
             max="4"
             step="0.5"
+          />
+        </div>
+        <div className="edit-slot-input-group">
+          <label htmlFor="itemRoom">Room:</label>
+          <input
+            type="text"
+            id="itemRoom"
+            value={currentItem.room || ""}
+            onChange={(e) => setCurrentItem({ ...currentItem, room: e.target.value })}
           />
         </div>
         <div className="edit-slot-button">
