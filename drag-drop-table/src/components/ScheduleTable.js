@@ -1,7 +1,7 @@
 import React from "react";
 import DroppableCell from "./DroppableCell";
 
-const ScheduleTable = ({ schedule, addToSchedule, removeFromSchedule, onItemClick, moveItem, selectedYear}) => {
+const ScheduleTable = ({ schedule, addToSchedule, removeFromSchedule, onItemClick, moveItem, selectedYear }) => {
   const renderCells = () => {
     const cells = [];
     const timeSlots = Array.from({ length: 24 }, (_, i) => {
@@ -31,16 +31,16 @@ const ScheduleTable = ({ schedule, addToSchedule, removeFromSchedule, onItemClic
             );
             let backgroundColor;
             switch (selectedYear) {
-              case "ปี1":
+              case "1":
                 backgroundColor = '#FFFFCC'; // light yellow
                 break;
-              case "ปี2":
+              case "2":
                 backgroundColor = '#FFD1DC'; // light pink
                 break;
-              case "ปี3":
+              case "3":
                 backgroundColor = '#CCFFCC'; // light green
                 break;
-              case "ปี4":
+              case "4":
                 backgroundColor = '#CCFFFF'; // light blue
                 break;
               default:
