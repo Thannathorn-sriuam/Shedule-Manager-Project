@@ -11,6 +11,7 @@ import filem from "./bookmark_manager.png";
 import CSVImportPopup from "./components/CSVImportPopup"; // เพิ่มการ import CSVImportPopup
 import Noti from "./components/Noti"; // add 
 import EditSlot from "./components/EditSlot";//add
+import Addnew from "./components/Addnew"; //add
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -81,7 +82,7 @@ const App = () => {
           (newRow <= scheduledItem.row && newRow + item.duration > scheduledItem.row)
         )
     );
-  
+
     if (!conflict) {
       setSchedule((prevSchedule) =>
         prevSchedule.map((scheduledItem) =>
@@ -90,10 +91,10 @@ const App = () => {
             : scheduledItem
         )
       );
-  
+
       // Debugging output
       console.log(`Updating slot date: slotId=${item.slot_id}, date=${['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][newCol - 1]}`);
-  
+
       // Update the date column in the database
       fetch(`/api/update-slot-date`, {
         method: 'POST',
@@ -110,7 +111,7 @@ const App = () => {
         .catch((error) => console.error('Error updating slot date:', error));
     }
   };
-  
+
 
   const handleItemClick = (item) => {
     setCurrentItem(item);
@@ -206,16 +207,14 @@ const App = () => {
                   {items.map((item) => (
                     <DraggableItem key={item.id} item={item} />
                   ))}
-                  <button
-                    onClick={() =>
+                  <Addnew // new function
+                    onAddItem={(newItem) =>
                       setItems((prevItems) => [
                         ...prevItems,
-                        { id: prevItems.length + 1, name: "New Item", duration: 1 },
+                        newItem,
                       ])
                     }
-                  >
-                    + Add Item
-                  </button>
+                  />
                 </div>
               </div>
             </div>
@@ -231,7 +230,7 @@ const App = () => {
               moveItem={moveItem}
               selectedYear={selectedOptions[2]}
             />
-             {showPopup && (
+            {showPopup && (
               <EditSlot //new
                 currentItem={currentItem}
                 setCurrentItem={setCurrentItem}
