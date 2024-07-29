@@ -1,10 +1,9 @@
 import React from "react";
 
-const EditSlot = ({ currentItem, setCurrentItem, handleSaveEdit }) => {
+const EditSlot = ({ currentItem, setCurrentItem, handleSaveEdit, rooms }) => {
   return (
     <div className="edit-slot-popup">
       <div className="edit-slot-popup-inner">
-        <h2>{currentItem.name}</h2>
         <div className="edit-slot-input-group">
           <label htmlFor="itemName">Subject Name:</label>
           <input
@@ -15,16 +14,35 @@ const EditSlot = ({ currentItem, setCurrentItem, handleSaveEdit }) => {
           />
         </div>
         <div className="edit-slot-input-group">
-          {currentItem.id}
-        </div>
-        <div className="edit-slot-input-group">
           <label htmlFor="itemAjName">Aj. Name:</label>
-          <input
+          <select
             type="text"
             id="itemAjName"
             value={currentItem.ajName || ""}
             onChange={(e) => setCurrentItem({ ...currentItem, ajName: e.target.value })}
-          />
+          >
+            <option value="" disabled>Select Aj</option>
+            {rooms.map((room) => (
+              <option key={room.name} value={room.name}>
+                {room.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="edit-slot-input-group">
+          <label htmlFor="itemRoom">Room:</label>
+          <select
+            id="itemRoom"
+            value={currentItem.room || ""}
+            onChange={(e) => setCurrentItem({ ...currentItem, room: e.target.value })}
+          >
+            <option value="" disabled>Select a room</option>
+            {rooms.map((room) => (
+              <option key={room.name} value={room.name}>
+                {room.name}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="edit-slot-input-group">
           <label htmlFor="itemDuration">Duration:</label>
@@ -43,22 +61,9 @@ const EditSlot = ({ currentItem, setCurrentItem, handleSaveEdit }) => {
             step="0.5"
           />
         </div>
-        <div className="edit-slot-input-group">
-          <label htmlFor="itemRoom">Room:</label>
-          <input
-            type="text"
-            id="itemRoom"
-            value={currentItem.room || ""}
-            onChange={(e) => setCurrentItem({ ...currentItem, room: e.target.value })}
-          />
-        </div>
-        <div className="edit-slot-button">
-          <button className="edit-slot-cancel" onClick={onclose}>Cancel</button>
-          <button className="edit-slot-save-button" onClick={handleSaveEdit}>
-            Save
-          </button>
-        </div>
-
+        <button className="edit-slot-save-button" onClick={handleSaveEdit}>
+          Save
+        </button>
       </div>
       <style jsx>{`
         .edit-slot-popup {
@@ -92,26 +97,12 @@ const EditSlot = ({ currentItem, setCurrentItem, handleSaveEdit }) => {
           font-weight: bold;
         }
 
-        .edit-slot-input-group input {
+        .edit-slot-input-group input,
+        .edit-slot-input-group select {
           flex: 1;
           padding: 10px;
           border: 1px solid #ccc;
           border-radius: 5px;
-        }
-        
-        .edit-slot-button {
-          float: right;
-          justify-content: space-evenly;
-        }
-
-        .edit-slot-cancel {
-          padding: 10px 20px;
-          font-size: 16px;
-          background-color: #F34E4E;
-          color: white;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
         }
 
         .edit-slot-save-button {
@@ -127,12 +118,10 @@ const EditSlot = ({ currentItem, setCurrentItem, handleSaveEdit }) => {
         .edit-slot-save-button:hover {
           background-color: #45a049;
         }
-        .edit-slot-cancel:hover {
-          background-color: #F34E4D;
-        }
       `}</style>
     </div>
   );
 };
 
 export default EditSlot;
+

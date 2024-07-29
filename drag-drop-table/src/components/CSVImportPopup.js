@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./CSVImportPopup.css";
+// import "./CSVImportPopup.css";
 
 const CSVImportPopup = ({ onClose }) => {
   const [file, setFile] = useState(null);
