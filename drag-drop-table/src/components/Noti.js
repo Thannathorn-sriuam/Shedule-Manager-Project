@@ -15,11 +15,11 @@ const Noti = ({ notifications, onClose }) => {
       <div className="noti-header">
         <div className="noti-item">
           <p className="noti-R">{notiR}</p>
-          <input type="checkbox" className="noti-checkbox" />
+          <input type="checkbox" className="check" />
         </div>
         <div className="noti-item">
           <p className="noti-T">{notiT}</p>
-          <input type="checkbox" className="noti-checkbox" />
+          <input type="checkbox" className="check" />
         </div>
         <button className="close-button" onClick={onClose}>X</button>
       </div>
